@@ -1,0 +1,259 @@
+* :not(.material-icons)
+{ 
+  //font-family: 'Kanit', sans-serif !important;
+  font-family: 'Arial', "Helvetica", sans-serif !important;
+}
+
+
+
+// :host ::ng-deep table,tr,td,select,option
+//  {
+//   //font-family: 'Kanit', sans-serif!important;
+//   font-family: 'Arial', "Helvetica", sans-serif !important;
+//   font-size: 8pt !important;
+// }
+
+:host ::ng-deep * :not(.pi , h2 , .mat-icon )  {
+  //font-family: 'Kanit', sans-serif!important;
+  //font-family: 'Tahoma', "Trebuchet MS", sans-serif !important;
+
+  font-family: 'Arial', "Helvetica", sans-serif !important;
+  font-size: 8pt !important;
+}
+
+:host ::ng-deep input  {
+  height: 35px;
+  font-family: 'Arial', "Helvetica", sans-serif !important;
+  font-size: 8pt !important;
+}
+
+:host ::ng-deep input +button  {
+  height: 35px;
+}
+
+:host ::ng-deep .p-component {
+  font-size: 8pt !important;
+}
+
+// ::placeholder {
+//   color: #6c757d!important;
+//   opacity: 1; /* Firefox */
+// }
+
+.layout-center 
+{
+  display: flex;
+  justify-content: center;
+}
+.layout-space-between
+{
+  display: flex;
+  justify-content: space-evenly;
+}
+.icon-pointer {
+  cursor:pointer;
+  padding-right: 10px;
+}
+
+
+
+
+
+
+
+
+table {
+  width: 100%;
+}
+
+.mat-table {
+  width: 100%;
+  overflow-x: scroll;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+tr.mat-row {
+  /* row border */
+  border: 1px solid #d1c7c7;
+}
+
+td.mat-cell {
+  /* row border */
+  border: 1px solid #d1c7c7;
+}
+
+th.mat-header-cell {
+  font-size:14px;
+  font-weight:700
+}
+
+a.btn-login {
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-login {
+  margin-top: 20px;
+  display: block;
+  background: #023E90;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 6px;
+  border: none;
+  transition: all .4s ease-in-out;
+}
+
+.btn-login2 {
+  margin-top: 20px;
+  display: block;
+  background: #023E90;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 6px;
+  border: none;
+  transition: all .4s ease-in-out;
+  cursor:pointer;
+  text-decoration: none;
+}
+
+.btn-Save {
+  margin-top: 25px;
+  display: block;
+  background: #023E90;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 6px;
+  border: none;
+  transition: all .4s ease-in-out;
+  height: 40px;
+}
+
+.btn-Cancel {
+  cursor:pointer;
+  margin-left: 25px;
+  margin-top: 25px;
+  display: block;
+  background: #9da7b4;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 6px;
+  border: none;
+  transition: all .4s ease-in-out;
+  text-decoration: none;
+}
+
+
+
+.form-control {
+  // background: #F8F8F8;
+  // //font-size: 18px;
+  // color: black;
+  // margin-bottom: 1rem;
+  
+  // border: 1px solid #ccc;
+  // border-radius: 4px;
+  // box-sizing: border-box;
+}
+
+// ::placeholder {
+//   color: #979797;
+//   opacity: 1; /* Firefox */
+// }
+
+.txt-remark {
+  color: #FF0000;
+  }
+
+  input[type=text]:disabled {
+    background: #a19e9ed3;
+  }
+
+  .my-select-style   {
+    color: #0c0000;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+
+  .margin-top-table {
+    margin-top: 20px;
+    height: 55vh;
+    overflow: auto;
+  }
+
+  
+:host ::ng-deep   .custom-cal .p-datepicker table td {
+  padding: 0.0rem;
+}
+
+textarea:disabled {
+  background: #a19e9ed3;
+}
+
+.form-select:disabled  {
+  color: #0c0000;
+  border: 1px solid #ccc;
+  background-color: #a19e9ed3 ;
+}
+
+.mat-row:nth-child(even) {
+  background-color: rgb(224, 223, 223);
+}
+
+.mat-row:nth-child(odd) {
+  background-color: white;
+}
+
+tr.mat-row,
+tr.mat-footer-row {
+  height: 0px !important;
+  //line-height: 10px!important;
+}
+
+:host ::ng-deep #th_System>div:first-child {
+  width: 100px;
+}
+
+:host ::ng-deep #th_description>div:first-child {
+  width: 200px;
+}
+:host ::ng-deep #th_create_by>div:first-child {
+  width: 300px;
+}
+
+:host ::ng-deep #th_update_by>div:first-child {
+  width: 300px;
+}
+
+:host ::ng-deep #th_status>div:first-child {
+  width: 150px;
+}
+
+
+@media screen and (max-width: 1232px) {
+
+
+  .btn-login {
+    margin-top: 20px;
+    display: block;
+    background: #023E90;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 6px;
+    border: none;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-login2 {
+    margin-top: 20px;
+    display: block;
+    background: #023E90;
+    color: #fff;
+    padding: 7px 20px;
+    border-radius: 6px;
+    border: none;
+    transition: all .4s ease-in-out;
+    cursor:pointer;
+  }
+
+}

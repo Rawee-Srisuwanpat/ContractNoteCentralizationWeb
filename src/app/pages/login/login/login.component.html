@@ -1,0 +1,58 @@
+<main class="main-login">
+  <div class="section-box-inner">
+    <div class="login-logo">
+      <img src="../assets/images/logo.jpg" alt="summit-logo">
+    </div>
+    <div class="box-login">
+      <div class="login-head">
+        <h1>Contract Note</h1>
+        <h1 class="title-bblue-ssky txt-center"><span>เข้าสู่</span>ระบบ</h1>
+      </div>
+      <div>
+        <form [formGroup]="loginFormGroup">
+        <div class="form-group" >
+          <label for="idcard">User Name:</label>
+          <input type="text" class="form-control" placeholder="User Name" 
+          id="idcard" name="idcard" maxlength="13" 
+          #user (keydown)="onKeyPress()" (keyup.enter)="login(user.value,password.value)"
+          formControlName="userName" >
+        </div>
+        <div class="form-group">
+          <label for="password">Password :</label>
+          <input type="password" class="form-control" id="password" name="password" #password  placeholder="Password"
+          (keydown)="onKeyPress()" (keyup.enter)="login(user.value,password.value)"
+          formControlName="password">
+        </div>
+        
+
+        <div class="row">
+          <div class="col-sm-6">
+            <button type="submit" class="btn-login" (click)="login(user.value,password.value)">Login</button>
+          </div>
+          <div class="col-sm-6">
+            <button type="submit" class="btn-login"  (click)="onClear()">Clear</button>
+          </div>
+        </div> 
+
+        <div class="row">
+          <div class="col-sm-6" >
+            <button type="submit" class="btn-login-link" [routerLink]="['/register']">Register</button>
+          </div>
+          <div class="col-sm-6" >
+            <button type="submit" class="btn-login-link" [routerLink]="['/forgetpassword']">Forgot Password?</button>
+          </div>
+        </div> 
+        <!-- <p class="txt-remark" style="padding-top: 15px;">*ลูกค้าซัมมิท
+          แคปปิตอลที่ต้องการเข้าสู่ระบบจะต้องทำการลงทะเบียนใหม่ คลิกปุ่ม ลงทะเบียน</p> -->
+          <!-- <p-button label="Submit"></p-button> -->
+
+          <div  [class] = "isSuccess ?  'alert alert-success' : 'alert alert-danger' "   role="alert" [hidden]="!isShowAlert">
+            {{ messageLogin }}
+          </div>
+
+        </form>
+          
+      </div>
+    </div>
+  </div>
+</main>

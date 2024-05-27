@@ -1,0 +1,103 @@
+* :not(.material-icons)
+{ 
+  font-family: 'Kanit', sans-serif !important;
+}
+
+:host ::ng-deep input,table,select,option
+ {
+  font-family: 'Kanit', sans-serif!important;
+}
+
+::placeholder {
+  color: #6c757d!important;
+  opacity: 1; /* Firefox */
+}
+
+
+
+.icon-pointer {
+  cursor:pointer;
+  padding-right: 10px;
+}
+
+.layout-center 
+{
+  display: flex;
+  justify-content: center;
+}
+
+.layout-space-between
+{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+table {
+  width: 100%;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+th.mat-header-cell {
+  font-size:14px;
+  font-weight:700
+}
+
+a.btn-login {
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-login {
+  margin-top: 25px;
+  display: block;
+  background: #023E90;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 6px;
+  //width: 20%;
+  border: none;
+  transition: all .4s ease-in-out;
+}
+
+.form-control {
+  background: #F8F8F8;
+  //font-size: 18px;
+  color: black;
+  margin-bottom: 1rem;
+  
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.txt-remark {
+  color: #FF0000;
+  }
+
+  input[type=text]:disabled {
+    background: #a19e9ed3;
+  }
+
+  .my-select-style   {
+    color: #0c0000;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+
+  .margin-top-table {
+    margin-top: 20px;
+  }
+
+
+
+:host ::ng-deep   .custom-cal .p-datepicker table td {
+  padding: 0.0rem;
+}
+
+
+ 
+
+

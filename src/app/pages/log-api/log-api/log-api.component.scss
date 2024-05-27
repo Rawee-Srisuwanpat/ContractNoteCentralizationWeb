@@ -1,0 +1,243 @@
+* :not(.material-icons)
+{ 
+  //font-family: 'Kanit', sans-serif !important;
+  font-family: 'Arial', "Helvetica", sans-serif !important;
+}
+
+:host ::ng-deep input  {
+  height: 35px;
+  font-family: 'Arial', "Helvetica", sans-serif !important;
+  font-size: 8pt !important;
+}
+
+:host ::ng-deep input +button  {
+  height: 35px;
+}
+
+:host ::ng-deep .p-component {
+  font-size: 8pt !important;
+}
+
+// input,
+// :host ::ng-deep table,tr,td,select,option
+// {
+//   //font-family: 'Kanit', sans-serif!important;
+//   font-family: 'Arial', "Helvetica", sans-serif !important;
+//   font-size: 8pt !important;
+// }
+
+:host ::ng-deep * :not(.pi , h2) {
+  //font-family: 'Kanit', sans-serif!important;
+  //font-family: 'Tahoma', "Trebuchet MS", sans-serif !important;
+
+  font-family: 'Arial', "Helvetica", sans-serif !important;
+  font-size: 8pt !important;
+}
+
+.icon-pointer {
+  cursor:pointer;
+  padding-right: 10px;
+}
+
+.layout-center 
+{
+  display: flex;
+  justify-content: center;
+}
+
+.layout-space-between
+{
+  display: flex;
+  //justify-content: flex-start;
+  align-items: flex-start;
+}
+
+
+table {
+  width: 100%;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+th.mat-header-cell {
+  font-size:14px;
+  font-weight:700
+}
+
+
+tr.mat-row {
+  /* row border */
+  border: 1px solid #d1c7c7;
+}
+
+td.mat-cell {
+  /* row border */
+  border: 1px solid #d1c7c7;
+}
+
+// a.btn-login {
+//   text-decoration: none;
+//   cursor: pointer;
+// }
+
+.btn-login2 {
+  text-decoration: none;
+  cursor: pointer;
+  
+  margin-top: 10px;
+  margin-left: 20px;
+  //display: block;
+  background: #023E90;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 6px;
+  //width: 20%;
+  border: none;
+  transition: all .4s ease-in-out;
+}
+
+
+.btn-login {
+  margin-top: 10px;
+  margin-left: 20px;
+  //display: block;
+  background: #023E90;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 6px;
+  //width: 20%;
+  border: none;
+  transition: all .4s ease-in-out;
+}
+
+.form-control {
+ // background: #F8F8F8;
+  //font-size: 18px;
+  //color: black;
+  // margin-bottom: 1rem;
+  
+  // border: 1px solid #ccc;
+  // border-radius: 4px;
+  // box-sizing: border-box;
+}
+
+
+.txt-remark {
+  color: #FF0000;
+  }
+
+ 
+
+  // .my-select-style   {
+  //   color: #0c0000;
+  //   border: 1px solid #ccc;
+  //   margin-bottom: 1rem;
+  // }
+
+  tr.mat-row,tr.mat-footer-row {
+    height: 0px !important;
+    //line-height: 10px!important;
+  }
+
+  .mat-table {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  
+
+  .margin-top-table {
+    margin-top: 10px;
+    height: 55vh;
+    overflow: auto;
+  }
+
+  // ::placeholder {
+  //   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  //   font-size: 1rem;
+  //   color: #7d868f;
+  //   background: #ffffff;
+  //   //padding: 0.75rem 0.75rem;
+  //   //border: 1px solid #ced4da;
+  //   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  //   //appearance: none;
+  //   //border-radius: 6px;
+  // }
+
+
+
+  // :host ::ng-deep #th_action>div:first-child {
+  //   width: 400px;
+  // }
+
+  // :host ::ng-deep #th_No>div:first-child {
+  //   width: 60px;
+  // }
+  
+  :host ::ng-deep #th_system_name>div:first-child {
+    width: 178px;
+  }
+
+  :host ::ng-deep #th_CreateDate>div:first-child {
+    width: 180px;
+  }
+
+  :host ::ng-deep #th_api>div:first-child {
+    width: 120px;
+  }
+
+  .autoCompleteLayout {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+
+  .mat-row:nth-child(even) {
+    background-color: rgb(224, 223, 223);
+  }
+  
+  .mat-row:nth-child(odd) {
+    background-color: white;
+  }
+
+  
+
+
+
+
+:host ::ng-deep   .custom-cal .p-datepicker table td {
+  padding: 0.0rem;
+}
+
+@media screen and (max-width: 1232px) {
+
+
+  .btn-login {
+    //margin-top: 20px;
+    display: block;
+    background: #023E90;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 6px;
+    border: none;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-login2 {
+    //margin-top: 20px;
+    display: block;
+    background: #023E90;
+    color: #fff;
+    padding: 7px 20px;
+    border-radius: 6px;
+    border: none;
+    transition: all .4s ease-in-out;
+    cursor:pointer;
+  }
+
+}
+
+
+ 
+
+

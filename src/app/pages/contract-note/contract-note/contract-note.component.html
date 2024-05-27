@@ -1,0 +1,561 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="layout-center">
+      <h2>Contract Note</h2>
+    </div>
+  </div>
+
+  <!-- on Search -->
+  <div class="row">
+
+                          
+    <form [formGroup]="formSearch" (ngSubmit)="onSearch()">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="idcard">Contract </label>
+            <input type="text" class="form-control" formControlName="txtSearch" placeholder="Contract Number" [style]="{'width':'100%'}">
+          </div>
+        </div>
+
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>System </label>
+            <div>
+            <p-autoComplete [(ngModel)]="selectedSystem" [dropdown]="true" placeholder="All" class="autoCompleteLayout"
+              [suggestions]="filteredSystem" (completeMethod)="filterSystem($event)" field="System"
+              formControlName="system" [style]="{'width':'100%'}"></p-autoComplete>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-sm-3">
+          <div class="form-group">
+
+            <label>Contract Date </label>
+            <p-calendar dateFormat="dd/mm/yy" [showIcon]="true" placeholder="Start date - End date"
+              selectionMode="range" [readonlyInput]="true" 
+              formControlName="contract_date" class="custom-cal" [style]="{'width':'100%'}"
+              [showButtonBar]="true">
+            </p-calendar>
+
+
+
+
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+
+            <label>Create Date </label>
+              <p-calendar dateFormat="dd/mm/yy" [showIcon]="true" placeholder="Start date - End date"
+                selectionMode="range" [readonlyInput]="true" 
+                formControlName="create_end_Date" class="custom-cal" [style]="{'width':'100%'}"
+                [showButtonBar]="true" >
+              </p-calendar>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Action Code</label>
+            <p-autoComplete [(ngModel)]="selectedActionCode" [dropdown]="true" placeholder="All" class="autoCompleteLayout"
+              [suggestions]="filteredActionCode" (completeMethod)="filterActionCode($event)" field="action_code"
+              formControlName="actionCode" [style]="{'width':'100%'}"></p-autoComplete>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Result Code </label>
+            <p-autoComplete [(ngModel)]="selectedResultCode" [dropdown]="true" placeholder="All" class="autoCompleteLayout"
+              [suggestions]="filteredResultCode" (completeMethod)="filterResultCode($event)" field="result_code"
+              formControlName="resultCode" [style]="{'width':'100%'}"></p-autoComplete>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+
+            <label>Collector Team Code </label>
+            <p-autoComplete [(ngModel)]="selectedCollectorTeamCode" [dropdown]="true" placeholder="All" class="autoCompleteLayout"
+              [suggestions]="filteredCollectorTeamCode" (completeMethod)="filterCollectorTeamCode($event)" field="team_code"
+              formControlName="CollectorTeamCode" [style]="{'width':'100%'}"></p-autoComplete>
+            <!-- <select class="form-select my-selectStyle" aria-label="Default select example" formControlName="CollectorTeamCode">
+              <option *ngFor="let opt of collectorTeamCodeList$ | async" [value]="opt.team_code">
+                {{opt.team_name }}
+              </option>
+            </select> -->
+
+            <!-- <label>Action Code </label>
+            <select class="form-select my-selectStyle" aria-label="Default select example" formControlName="actionCode">
+              <option *ngFor="let opt of actionCodeList$ | async" [value]="opt.action_code">
+                {{opt.description }}
+              </option>
+            </select> -->
+
+
+
+
+
+            <!-- <p-dropdown [options]="countries" 
+                          [(ngModel)]="selectedCountry" 
+                          optionLabel="name" 
+                          [filter]="true" 
+                          filterBy="name" 
+                          [showClear]="true" 
+                          placeholder="Please Select"
+                          (onChange)="onChange($event)"
+                           id ='d1'>
+                  <ng-template pTemplate="selectedItem">
+                      <div class="country-item country-item-value" *ngIf="selectedCountry">
+                          <div>{{ selectedCountry.name }}</div>
+                      </div>
+                  </ng-template>
+                  <ng-template let-country pTemplate="item">
+                          <div>{{ country.name }}</div>
+                  </ng-template>
+              </p-dropdown> -->
+
+
+
+
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Collector Code </label>
+            <p-autoComplete [(ngModel)]="selectedCollectorCode" [dropdown]="true" placeholder="All" class="autoCompleteLayout"
+              [suggestions]="filteredCollectorCode" (completeMethod)="filterCollectorCode($event)"
+              field="collector_code" formControlName="CollectorCode" [style]="{'width':'100%'}"></p-autoComplete>
+          </div>
+        </div>
+
+      
+      </div>
+
+      <div class="row" >
+        <div class="col-sm-12">
+            <div class="layout-space-between">
+              <button type="submit" class="btn-login">Search</button>
+              <a class="btn-login2" (click)="onClear()"> Clear</a>
+          </div>
+        </div>
+      </div>
+
+
+
+    </form>
+
+
+  </div>
+  <!-- end Search -->
+
+
+
+
+
+
+
+  <!-- on table -->
+  <div class="margin-top-table">
+
+
+
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+      class="mat-elevation-z8">
+
+      <!-- Row_no Column -->
+      <ng-container matColumnDef="Row_no">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+          No. </th>
+        <td mat-cell *matCellDef="let element;let i=index"> {{i+1 + this.myIndex}} </td>
+      </ng-container>
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number" [hidden]="true"> Id
+        </th>
+        <td mat-cell *matCellDef="let element" [hidden]="true"> {{element.Id}} </td>
+      </ng-container>
+
+
+      <!-- Contract_No Column -->
+      <ng-container matColumnDef="contract_no">
+        <th id="th_contract_no" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Description"> Contract_No
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.contract_no}} </td>
+      </ng-container>
+
+      <!-- Customer_Name Column -->
+      <ng-container matColumnDef="customer_name">
+        <th id="th_Customer_Name" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Description"> Customer_Name
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.customer_name}} </td>
+      </ng-container>
+
+      <!-- Tel Column -->
+      <ng-container matColumnDef="Tel">
+        <th id="th_Tel" mat-header-cell *matHeaderCellDef mat-sort-header
+          sortActionDescription="Sort by CreateBy_CreateDate"> Tel
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.telephone_no}} </td>
+      </ng-container>
+
+      <!-- System Column -->
+      <ng-container matColumnDef="system_name">
+        <th id="th_Tel" mat-header-cell *matHeaderCellDef mat-sort-header
+          sortActionDescription="Sort by system_name"> System
+        </th>
+        <td mat-cell *matCellDef="let element">  {{element.system_name}}  </td>
+      </ng-container>
+
+
+
+      <!-- Note Column -->
+      <ng-container matColumnDef="Note">
+        <th id="th_Note" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Note"> Note
+        </th>
+        <td mat-cell *matCellDef="let element" (click)="getColumn(element)" >
+
+
+          <div attr.id="note_{{element.contact_note_id}}">+ {{element.note?.substring(0,30)}} </div>
+
+
+        </td>
+      </ng-container>
+
+      <!-- Contact_Date Column -->
+      <ng-container matColumnDef="contact_date">
+        <th id="th_ContactDate" mat-header-cell *matHeaderCellDef mat-sort-header
+          sortActionDescription="Sort by contact_date"> Contact_Date
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.contact_date}} </td>
+      </ng-container>
+
+
+      <!-- Action_Code Column -->
+      <ng-container matColumnDef="action_code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Action_code"> Action_Code </th>
+        <td mat-cell *matCellDef="let element"> {{element.action_code}} </td>
+      </ng-container>
+
+      <!-- Result_Code Column -->
+      <ng-container matColumnDef="result_code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Status"> Result_Code </th>
+        <td mat-cell *matCellDef="let element"> {{element.result_code}} </td>
+      </ng-container>
+
+      <!-- Remind_Date Column -->
+      <ng-container matColumnDef="Remind_Date">
+        <th id="th_RemindDate" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Status">
+          Remind_Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.remind_date}} </td>
+      </ng-container>
+
+      <!-- Payment_Card_No Column -->
+      <ng-container matColumnDef="Payment_Card_No">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Status"> Payment_Card_No
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.payment_no}} </td>
+      </ng-container>
+
+      <!-- Dept_Code Column -->
+      <ng-container matColumnDef="Dept_Code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Status"> Dept_Code </th>
+        <td mat-cell *matCellDef="let element"> {{element.note_dept_code}} </td>
+      </ng-container>
+
+      <!-- Related_Dept Column -->
+      <ng-container matColumnDef="Related_Dept">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Status"> Related_Dept </th>
+        <td mat-cell *matCellDef="let element"> {{element.related_dept_code}} </td>
+      </ng-container>
+
+
+      <!-- Collector_Team_Code Column -->
+      <ng-container matColumnDef="collector_team_code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Status"> Collector_Team_Code
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.collector_team_code}} </td>
+      </ng-container>
+
+      <!-- Collector_Code Column -->
+      <ng-container matColumnDef="Collector_Code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Status"> Collector_Code
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.collector_code}} </td>
+      </ng-container>
+
+      <!-- Collector_Name Column -->
+      <ng-container matColumnDef="collector_name">
+        <th id="th_Collector_Name" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Status"> Collector_Name
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.collector_name}} </td>
+      </ng-container>
+
+
+
+      <!-- Create_By Column -->
+      <ng-container matColumnDef="create_by">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by create_by"> Create_By </th>
+        <td mat-cell *matCellDef="let element"> {{element.create_by}} </td>
+      </ng-container>
+
+      <!-- Create_Date Column -->
+      <ng-container matColumnDef="create_date">
+        <th id="th_CreateDate" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by create_date"> Create_Date
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.create_date}} </td>
+      </ng-container>
+
+
+
+
+      <!-- Tel_SMS Column -->
+      <ng-container matColumnDef="Tel_SMS">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Status"> Tel_SMS </th>
+        <td mat-cell *matCellDef="let element"> {{element.tel_sms}} </td>
+      </ng-container>
+
+
+
+
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter </td>
+      </tr>
+    </table>
+
+    <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center; background: white;">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+
+
+
+
+
+
+  </div>
+  <!-- end on table -->
+
+  <!-- on pageine -->
+
+  <div class="row">
+    <p-blockUI [blocked]="isLoading">
+      <!-- <i class="pi pi-lock" style="font-size: 3rem"></i> -->
+    </p-blockUI>
+
+    <mat-paginator #paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[20]"
+      aria-label="Select page" (page)="handlePageEvent($event)">
+    </mat-paginator>
+
+
+
+  </div>
+  <!-- end on pageine -->
+
+  <!-- <div class="card">
+    <p-treeTable [value]="files" [scrollable]="true" [tableStyle]="{'min-width':'50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>No.</th>
+                <th>Action Code<Code></Code></th>
+                <th>Result Code</th>
+                <th>System</th>
+                <th>Contract</th>
+                <th>Create By | Date</th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+            <tr [ttRow]="rowNode">
+                <td>
+                    <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                    {{ rowData.No }}
+                </td>
+                <td>{{ rowData.Action_Code }}</td>
+                <td>{{ rowData.Result_Code }}</td>
+                <td>{{ rowData.System }}</td>
+                <td>{{ rowData.Contract }}</td>
+                <td>{{ rowData.CreateBy_CreateDate }}</td>
+
+
+                <td> 
+                  <div *ngIf="(rowData.No != '') ? true : false">
+                  <mat-icon class="icon-pointer" (click)="onRowClickView(0)">visibility</mat-icon>
+                  </div> 
+                </td>
+            </tr>
+        </ng-template>
+    </p-treeTable>
+
+   
+
+  <div class="paggin">
+         
+            <div style="padding-top: 1%;">  
+            <span class="mx-1 text-color">Items per page: </span>
+            <p-dropdown id='ddlItemPerPage'  dataKey="selected" [options]="options" 
+            optionLabel="label" optionValue="value" [(ngModel)]="rows" (ngModelChange)="first"  (onChange)="onDDLChange2($event)">
+
+            </p-dropdown>
+
+            </div>
+
+            <p-paginator [first]="first" [rows]="rows" [totalRecords]="total" (onPageChange)="onPageChange2($event)" 
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="{first} - {last} of {totalRecords}" 
+            [showPageLinks]="false" 
+            [showFirstLastIcon]="false">
+            </p-paginator>
+
+  </div> 
+
+
+</div> -->
+
+
+
+</div>
+
+
+
+
+
+<!-- Save Example
+
+<div>
+  <p-dialog header="Search Data" [visible]="isShowDialogSearch"  (visibleChange)="onCloseDialogCollectorTeamCode()"
+    [draggable]="false" [style]="{width: '50vw'}">
+  
+   <div>
+
+    <div class="row">
+      <form [formGroup]="DialogSearchCollectorTeamCodeFormSearch" (ngSubmit)="onSearch()">
+        
+      
+  
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+  
+              <label>Collector Team Code </label>
+              <select class="form-select my-selectStyle" aria-label="Default select example" formControlName="CollectorTeamCode">
+                <option *ngFor="let opt of collectorTeamCodeList$ | async" [value]="opt.team_code">
+                  {{opt.team_name }}
+                </option>
+              </select>
+  
+            </div>
+          </div>
+  
+  
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>Collector Code </label>
+              <input type="text" class="form-control" formControlName="CollectorCode" placeholder="Collector Code">
+            </div>
+          </div>
+  
+          <div class="col-sm-4">
+            <div class="row">
+              <div class="layout-space-between">
+                <button type="submit" class="btn-login">Search</button>
+                <a class="btn btn-login" (click)="onClear()">Clear</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+    
+  
+  
+      </form>
+    </div>
+
+    <div class="row">
+      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+      class="mat-elevation-z8">
+
+      <ng-container matColumnDef="Row_no">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number" [hidden]="false"> No. </th>
+        <td mat-cell *matCellDef="let element;let i=index" [hidden]="false"> {{i+1 + this.myIndex}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number" [hidden]="true"> Id
+        </th>
+        <td mat-cell *matCellDef="let element" [hidden]="true"> {{element.Id}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="Contract_No">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Description"> Contract_No
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element.contract_no}} </td>
+      </ng-container>
+
+      
+
+   
+
+      
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsCollectorTeam"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsCollectorTeam;" (click)="getRecord(row)"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter </td>
+      </tr>
+    </table>
+
+    </div>
+   
+   </div>
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check"  (click)="onCloseDialogCollectorTeamCode()" label="Ok" pAutoFocus></p-button>
+    </ng-template>
+  </p-dialog>
+</div>
+
+
+
+
+    <div class="row">
+         <div class="col-sm-4">
+          <div class="form-group">
+            <label>Collector Team Code </label>
+            <div class="row">
+              <input type="text" class="form-control" formControlName="CollectorCode" placeholder="" style="width:10%">
+              <p-button icon="pi pi-search"  severity="success" (click)="openDialog()" style="width:20%;"></p-button>
+              <input type="text" class="form-control" formControlName="CollectorCode" placeholder="" style="width:50%">
+            </div>
+           
+          </div>
+        </div> 
+
+
+        <div class="col-sm-4">
+          
+
+        </div>
+      </div>
+
+
+
+-->

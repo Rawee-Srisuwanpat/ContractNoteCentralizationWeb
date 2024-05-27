@@ -1,0 +1,14 @@
+<div class="flex-container">
+  <div class="d-flex justify-content-end mb-3">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      Create
+    </button>
+  </div>
+
+
+  <app-ng-table [_source]="COUNTRIES" [columns]="COLUMNS" [canDelete]="true"></app-ng-table>
+
+  <!-- <app-ng-table [source]="COUNTRIES2" [columns]="COLUMNS2"></app-ng-table> -->
+</div>
+
+<app-popup-example (output)="popupResult($event)"></app-popup-example>

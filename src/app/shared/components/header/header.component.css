@@ -1,0 +1,16 @@
+.border-style{ margin-left: -20px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+ul .dropdown-menu {
+    position: absolute;
+    inset: 0px 0px auto auto;
+    margin: 0px;
+    transform: translate(-16px, 38px);
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+     

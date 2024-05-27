@@ -1,0 +1,21 @@
+
+
+
+<div>
+  <!-- <div class="sidebarleft" > -->
+    <div [ngClass] = "is_toggle_side_menu == true ?  'sidebarleft' : 'sidebarleft closebar' ">
+    <sidebar [text_sidebar]="text"  [isShowMenu] = "is_toggle_side_menu"></sidebar>
+    <!-- <p-button label="Submit"></p-button>  -->
+  </div>
+  <!-- <div class="content"> -->
+    <div [ngClass] = "is_toggle_side_menu == true ?  'content' : 'content closecontent' ">
+    <header-menu></header-menu>
+
+    <div>
+       <!-- {{ text}} -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+

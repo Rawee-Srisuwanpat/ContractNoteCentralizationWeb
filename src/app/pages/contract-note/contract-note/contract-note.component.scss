@@ -1,0 +1,304 @@
+* :not(.material-icons) {
+  //font-family: 'Kanit', sans-serif !important;
+  font-family: 'Arial', "Helvetica", sans-serif !important;
+
+  //font-family: 'Tahoma', "Trebuchet MS", sans-serif !important;
+}
+
+:host ::ng-deep input {
+  height: 35px;
+  font-family: 'Arial', "Helvetica", sans-serif !important;
+  font-size: 8pt !important;
+}
+
+:host ::ng-deep input +button {
+  height: 35px;
+}
+
+:host ::ng-deep .p-component {
+  font-size: 8pt !important;
+}
+
+// :host ::ng-deep table,tr,td,select,option {
+//   //font-family: 'Kanit', sans-serif!important;
+//   //font-family: 'Tahoma', "Trebuchet MS", sans-serif !important;
+
+//   font-family: 'Arial', "Helvetica", sans-serif !important;
+//   font-size: 8pt !important;
+// }
+
+
+
+:host ::ng-deep * :not(.pi , h2 , .mat-icon) {
+  //font-family: 'Kanit', sans-serif!important;
+  //font-family: 'Tahoma', "Trebuchet MS", sans-serif !important;
+
+  font-family: 'Arial', "Helvetica", sans-serif !important;
+  font-size: 8pt !important;
+}
+
+.icon-pointer {
+  cursor: pointer;
+  padding-right: 10px;
+}
+
+.layout-center {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+table {
+  width: 100%;
+
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+th.mat-header-cell {
+  font-size: 14px;
+  font-weight: 700
+}
+
+tr.mat-row {
+  /* row border */
+  border: 1px solid #d1c7c7;
+}
+
+td.mat-cell {
+  /* row border */
+  border: 1px solid #d1c7c7;
+}
+
+// .mat-column-select {
+//   overflow: visible;
+//   margin-top: 10%;
+//   margin-left: 20%;
+// }
+
+.layout-space-between {
+  display: flex;
+  justify-content: flex-start;
+
+  //display: inline;
+}
+
+.btn-login2 {
+  text-decoration: none;
+  cursor: pointer;
+  
+  margin-top: 20px;
+  margin-left: 20px;
+  //display: block;
+  background: #023E90;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 6px;
+  //width: 20%;
+  border: none;
+  transition: all .4s ease-in-out;
+}
+
+.btn-login {
+  margin-top: 20px;
+  margin-left: 20px;
+  //display: block;
+  background: #023E90;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 6px;
+  //width: 20%;
+  border: none;
+  transition: all .4s ease-in-out;
+}
+
+.form-control {
+  // background: #F8F8F8;
+  // font-size: 14px;
+  // color: black;
+  // margin-bottom: 1rem;
+  // width: 80%;
+
+  // border: 1px solid #ccc;
+  // border-radius: 4px;
+  // box-sizing: border-box;
+}
+
+.autoCompleteLayout {
+  display: block;
+  //height: 16px;
+
+}
+
+.custom-cal {
+  display: block;
+}
+
+
+
+
+.txt-remark {
+  //color: #FF0000;
+}
+
+input[type=text] {
+  height: 38px;
+}
+
+// ::placeholder {
+//   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+//   font-size: 1rem;
+//   color: #7d868f;
+//   background: #ffffff;
+//   //padding: 0.75rem 0.75rem;
+//   //border: 1px solid #ced4da;
+//   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+//   //appearance: none;
+//   //border-radius: 6px;
+// }
+
+
+// input[type=text]:disabled {
+//   background: #a19e9ed3;
+// }
+
+// .my-selectStyle {
+//   color: #0c0000;
+//   border: 1px solid #ccc;
+//   margin-bottom: 1rem;
+// }
+
+
+
+.paggin {
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+// :host ::ng-deep .p-paginator  {
+//   justify-content: flex-end ;
+
+// }
+
+.mat-table {
+  width: 100%;
+  overflow-x: scroll;
+}
+
+
+
+
+
+
+
+tr.mat-row,
+tr.mat-footer-row {
+  height: 0px !important;
+  //line-height: 10px!important;
+}
+
+.margin-top-table {
+  margin-top: 10px;
+  height: 55vh;
+  overflow: auto;
+}
+
+
+
+
+:host ::ng-deep #th_contract_no>div:first-child {
+  width: 100px;
+}
+
+:host ::ng-deep #th_Note>div:first-child {
+  width: 350px;
+}
+
+:host ::ng-deep #th_Customer_Name>div:first-child {
+  width: 150px;
+}
+
+:host ::ng-deep #th_Tel>div:first-child {
+  width: 95px;
+}
+
+:host ::ng-deep #th_ContactDate>div:first-child {
+  width: 150px;
+}
+
+:host ::ng-deep #th_RemindDate>div:first-child {
+  width: 150px;
+}
+
+:host ::ng-deep #th_CreateDate>div:first-child {
+  width: 150px;
+}
+
+:host ::ng-deep #th_Collector_Name>div:first-child {
+  width: 250px;
+}
+
+
+
+
+
+
+.mat-row:nth-child(even) {
+  background-color: rgb(224, 223, 223);
+}
+
+.mat-row:nth-child(odd) {
+  background-color: white;
+}
+
+
+
+
+
+
+// :host ::ng-deep th div {
+//   width: 150px;
+// }
+
+
+// :host ::ng-deep .p-dropdown {
+//   width: 18rem;
+// }
+
+:host ::ng-deep .custom-cal .p-datepicker table td {
+  padding: 0.0rem;
+
+}
+
+
+@media screen and (max-width: 1232px) {
+
+
+  .btn-login {
+    //margin-top: 20px;
+    display: block;
+    background: #023E90;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 6px;
+    border: none;
+    transition: all .4s ease-in-out;
+  }
+
+  .btn-login2 {
+    //margin-top: 20px;
+    display: block;
+    background: #023E90;
+    color: #fff;
+    padding: 7px 20px;
+    border-radius: 6px;
+    border: none;
+    transition: all .4s ease-in-out;
+    cursor:pointer;
+  }
+
+}

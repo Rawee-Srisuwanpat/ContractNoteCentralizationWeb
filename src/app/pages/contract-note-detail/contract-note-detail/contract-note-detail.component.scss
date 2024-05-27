@@ -1,0 +1,39 @@
+.icon-pointer {
+  cursor:pointer;
+  padding-right: 10px;
+}
+
+.layout-center 
+{
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-column-select {
+  overflow: visible;
+  margin-top: 10%;
+  margin-left: 20%;
+}
+
+.form-control {
+  background: #F8F8F8;
+  font-size: 18px;
+  color: black;
+  margin-bottom: 1rem;
+  
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+::placeholder {
+  color: #979797;
+  opacity: 1; /* Firefox */
+}

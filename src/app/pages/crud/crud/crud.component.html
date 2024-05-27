@@ -1,0 +1,308 @@
+<div class="container">
+  <p> CRUD </p>
+
+  <div class="row">
+    <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)" > 
+
+      <div class="row">
+        <div class="col"> 
+          <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Firstname</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Firstname">
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Lastname</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Lastname">
+          </div> 
+          </div>
+
+          <div class="col">
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Monthly Income</label>
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Monthly Income">
+            </div> 
+            </div>
+
+     </div>
+
+
+     <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Select Province</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          
+        </div>
+
+        <div class="col">
+          <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Select Contract Time</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          
+        </div>
+
+        <div class="col">
+          <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Select Status</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          
+        </div>
+
+     </div>
+     
+     <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Mobile</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Mobile">
+        </div>
+        
+      </div>
+
+      <div class="col">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Select Channel</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        
+      </div>
+
+      <div class="col">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Auto mail</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        
+      </div>
+
+     </div>
+
+     <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Date From:</label>
+          <input type="date" class="form-control"  id="dateForm" name="dateForm">
+        </div>
+        
+      </div>
+
+      <div class="col">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Date To:</label>
+          <input type="date" class="form-control"  id="dateForm" name="dateTo">
+        </div>
+        
+      </div>
+
+      <div class="col">
+        <div class="mb-3">
+         
+        </div>
+        
+      </div>
+
+     </div>
+    
+
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" 
+        placeholder="name@example.com" formControlName = "email">
+
+    <input type= "text"  name="userName" placeholder="userName" 
+         formControlName = "userName"> 
+
+    <input type="submit"  value="Click here"> 
+    </form>
+  </div>
+
+  <p> Textbox result is: {{userName}} </p>
+  <p> Textbox result is: {{email}} </p>
+</div>
+
+
+
+
+<p-button (click)="showDialog()" icon="pi pi-external-link" label="Show"></p-button>
+
+<p-toast></p-toast>
+<p-confirmDialog #cd [style]="{ width: '50vw' }">
+    <ng-template pTemplate="header">
+        <h3>Header Content</h3>
+    </ng-template>
+    <ng-template pTemplate="icon">
+        <i class="pi pi-user"></i>
+    </ng-template>
+    <ng-template pTemplate="message">
+        <p>Message Template</p>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+    </ng-template>
+</p-confirmDialog>
+
+
+
+<p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <p class="m-0">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <div class="row">
+      <div class="row">
+        <div class="col"> 
+          <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Firstname</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Firstname">
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Lastname</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Lastname">
+          </div> 
+          </div>
+
+          <div class="col">
+            <div class="mb-3">
+              <label for="formGroupExampleInput" class="form-label">Monthly Income</label>
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Monthly Income">
+            </div> 
+            </div>
+
+     </div>
+
+    </div>
+    <p-button (click)="confirm($event)" icon="pi pi-check" label="Confirm"></p-button>
+
+    
+</p-dialog>
+
+
+Favorite Color: <input type="text" [formControl]="favoriteColorControl">
+
+Favorite Color Model: <input type="text" [(ngModel)]="favoriteColor">
+
+<p>{{tong}}</p>
+<p>{{name}}</p>
+
+<p>This is class binding 3 way</p> 
+
+<p [class] = "1 == 1 ?  'color-red' : 'color-bule' ">1. use [class] = "expression" </p>
+<p [ngClass] ="'color-bule'">2. use [ngClass] = "expression" </p>
+<p [class.color-bule] = "true">3. use [class.class-name] = "expression"</p>
+
+<div *ngIf="true">
+  Don't show
+</div>
+
+
+<ul class="search-result">
+  <li *ngFor="let hero of heroData" >
+      {{hero.name}}
+  </li>
+</ul>
+
+<p-calendar [(ngModel)]="date" dateFormat="dd.mm.yy" 
+[showIcon]="true"> 
+[defaultDate]="minDate"
+</p-calendar>
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+
+<div class="container">
+  <p-multiSelect
+  [options]="courses"
+  [(ngModel)]="selected"
+  defaultLabel="Select Course(s)"
+  display="chip"
+  optionLabel="name">
+</p-multiSelect>
+<!-- (onClick)="handleOnClick()"
+  (onChange)="handleOnChange()"
+  (onPanelShow)="handleOnPanelShow()"
+  (onPanelHide)="handleOnPanelHide()" -->
+
+</div>
+
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+
+
+<table  mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100 color-table">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!-- Row shown when there is no matching data. -->
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+  </tr>
+</table>
+
+<mat-form-field>
+  <mat-label>Input</mat-label>
+  <input matInput>
+</mat-form-field>
+
+
+

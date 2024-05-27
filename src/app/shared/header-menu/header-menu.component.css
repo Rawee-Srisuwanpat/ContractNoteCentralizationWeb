@@ -1,0 +1,28 @@
+/* * :not(.material-icons)
+{ 
+  font-family: 'Kanit', sans-serif !important;
+}
+
+:host ::ng-deep input,table,select,option
+ {
+  font-family: 'Kanit', sans-serif!important;
+} */
+
+.show {
+    display: block;
+}
+
+.hamburger {
+    padding-top: 15px;
+    padding-left: 15px;
+    cursor:pointer;
+}
+
+:host ::ng-deep .p-button
+{
+    color: black;
+    background-color: white;
+    height: 30px; 
+    font-size: small;
+    
+}

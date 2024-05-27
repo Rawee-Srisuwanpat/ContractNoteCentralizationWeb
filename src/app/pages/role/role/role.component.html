@@ -1,0 +1,424 @@
+<div class="container-fluid" style="height: 91vh;">
+
+  <div class="row">
+    <div class="layout-center">
+      <h2>Management Role</h2>
+    </div>
+  </div>
+
+  <!-- Dialog  -->
+  <div class="row">
+
+    <p-dialog header="{{ this.action }}" [(visible)]="visible" [modal]="true" [style]="{ width: '80vw' }" (onHide)="onCancel()"
+      [draggable]="false" [resizable]="false">
+
+      <div class="row">
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Role Name <span class="txt-remark">*</span></label>
+                <input type="text" class="form-control" formControlName="role_name" placeholder="Role Name">
+                <span *ngIf="formSubmitted && taskForm.get('role_name').hasError('required')" class="txt-remark">
+                  Role name is required
+                </span>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Status<span class="txt-remark">*</span> </label>
+                <select class="form-select my-selectStyle" aria-label="Default select example" formControlName="is_active">
+                  <option *ngFor="let opt of actionListWithoutAll$ | async" [value]="opt.master_value"  >
+                      {{opt.master_text }} 
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="first-name">Create By | Create Date: </label>
+                <input type="text" class="form-control" placeholder="UpdateBy_UpdateDate" formControlName="create_by">
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="form-group">
+                <label>Description </label>
+                <input type="text" class="form-control" formControlName="Description" placeholder="Description">
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="first-name">Update By | Update Date: </label>
+                <input type="text" class="form-control" placeholder="UpdateBy_UpdateDate" formControlName="update_by">
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+       
+
+
+        <div class="row">
+
+          <div class="col-sm-6">
+            <table id="table2" mat-table [dataSource]="dataSource2" 
+            class="mat-elevation-z8" >
+
+            <!-- checkbox Column -->
+            <ng-container matColumnDef="select">
+              <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()" [disabled]="is_disableCheckBox" (click)="getAllScreen()"
+                  class="chkStyleHeader">
+                </mat-checkbox>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row ;">
+                <div attr.id="note_{{row.Row_no}}">
+                <mat-checkbox  (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" (click)="getColumn(row)"
+                   [disabled]="is_disableCheckBox"
+                   [checked]="selection.isSelected(row)"
+                  class="chkStyleRow">
+                </mat-checkbox>
+              </div>
+              </mat-cell>
+            </ng-container>
+
+            <!-- [checked]="selection.isSelected(row)" -->
+
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="Row_no">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.Row_no}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Screen">
+              <th mat-header-cell *matHeaderCellDef> Screen </th>
+              <td mat-cell *matCellDef="let element"> 
+                <div attr.id="screen_{{element.Row_no}}">
+                  {{element.Screen}} 
+                </div>
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef> Description
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+            </ng-container>
+
+
+
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns2;" 
+            [ngClass]="{'highlight': currentRow == row.Row_no}"
+            (click)="getRecord(row)"></tr>
+
+
+          </table>
+          </div>
+          
+          <div class="col-sm-6">
+            <table id="table3" mat-table [dataSource]="dataSource3" 
+            class="mat-elevation-z8">
+
+            <!-- checkbox Column -->
+            <ng-container matColumnDef="select">
+              <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle3() : null"
+                  [checked]="selection3.hasValue() && isAllSelected3()"
+                  [indeterminate]="selection3.hasValue() && !isAllSelected3()" [disabled]="is_disableCheckBox"
+                  class="chkStyleHeader" (click)="getAllAction(selection3.hasValue()  && isAllSelected3())">
+                </mat-checkbox>
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection3.toggle(row) : null"
+                  [checked]="selection3.isSelected(row)" [disabled]="is_disableCheckBox"
+                  class="chkStyleRow2" (click)="getColumnAction(row)">
+                </mat-checkbox>
+              </mat-cell>
+            </ng-container>
+
+
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="Row_no">
+              <th mat-header-cell *matHeaderCellDef > No. </th>
+              <td mat-cell *matCellDef="let element;let i=index"> {{i+1}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Action_name">
+              <th mat-header-cell *matHeaderCellDef > Action </th>
+              <td mat-cell *matCellDef="let element"> {{element.Action_name}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Description">
+              <th mat-header-cell *matHeaderCellDef> Description
+              </th>
+              <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns3;" ></tr>
+
+
+          </table>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="layout-center">
+            <div>
+              <input type="submit" value="Save" [hidden]="(this.action == 'View Data') ? true : false "
+                class="btn-Save">
+            </div>
+            <div>
+              <a class="btn-Cancel" (click)="onCancel()">Cancel</a>
+            </div>
+          </div>
+        </div>
+      </form>
+
+
+
+
+
+      </div>
+
+
+    </p-dialog>
+  </div>
+  <!-- Dialog End -->
+
+
+
+  <!-- on Search -->
+  <div class="row">
+    <form [formGroup]="formSearch" (ngSubmit)="onSearch()">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Search </label>
+            <input type="text" class="form-control" formControlName="txtSearch" placeholder="Role or Description">
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label>Status </label>
+            <!-- <select class="form-select my-selectStyle" aria-label="Default select example" formControlName="is_active">
+              <option *ngFor="let opt of statusIsActive$ | async" [value]="opt.master_value"  >
+                  {{opt.master_text }} 
+              </option>
+            </select> -->
+
+            <p-autoComplete [(ngModel)]="selectedStatus" [dropdown]="true" placeholder="All" class="autoCompleteLayout"
+            [suggestions]="filteredStatus" (completeMethod)="filterStatus($event)" field="master_text"
+            formControlName="is_active" [style]="{'width':'100%'}"></p-autoComplete>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="form-group">
+
+            <label>Create Date </label>
+            <div class="row">
+
+              <p-calendar #calendar [(ngModel)]="rangeDates" selectionMode="range" dateFormat="dd/mm/yy" [showIcon]="true"  [style]="{'width':'100%'}" 
+                placeholder="Start date - End date"  [readonlyInput]="true" formControlName="create_end_Date"
+                (onSelect)="onSelect()" [showButtonBar]="true">
+              </p-calendar>  
+
+
+              <!-- <p-calendar  selectionMode="range" formControlName="date"></p-calendar> -->
+
+            </div>
+
+          </div>
+        </div>
+
+        
+        <div class="col-sm-3">
+          <div class="row">
+            <div class="layout-space-between">
+              <button type="submit" class="btn-login">Search</button>
+              <button type="submit" class="btn-login" (click)="onClear()">Clear</button>
+              <a class="btn-login2" (click)="showDialogCreateTask(0)" [ngStyle]="{'visibility':is_create ? 'visible' : 'hidden'}">New</a>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+      <div class="row">
+
+       
+
+
+
+
+      </div>
+    </form>
+  </div>
+  <!-- end Search -->
+
+
+  <!-- on table -->
+  <div class="margin-top-table">
+
+    <table id="table1" mat-table [dataSource]="dataSource" 
+    matSort (matSortChange)="announceSortChange($event)"
+      class="mat-elevation-z8">
+
+
+
+      <!-- Row_no Column -->
+      <ng-container matColumnDef="Row_no">
+        <th mat-header-cell *matHeaderCellDef  sortActionDescription="Sort by Row_no"> No. </th>
+        <td mat-cell *matCellDef="let element;let i=index"> {{i+1 + this.myIndex}} </td>
+      </ng-container>
+
+       <!--  Id Column -->
+       <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Id" [hidden]="true"> Id </th>
+        <td mat-cell *matCellDef="let element" [hidden]="true"> {{element.Id_tbm_Role}} </td>
+      </ng-container>
+
+      <!-- Role_name Column -->
+      <ng-container matColumnDef="Role_name">
+        <th id="th_role" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Role_name"> Role </th>
+        <td mat-cell *matCellDef="let element"> {{element.Role_name}} </td>
+      </ng-container>
+
+      <!-- description Column -->
+      <ng-container matColumnDef="description">
+        <th id="th_description" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by description"> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="is_active_text">
+        <th id="th_status" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight"> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.is_active_text}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="create_by">
+        <th id="th_create_by" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol"> Create_by | Create
+          Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.create_by}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="update_by">
+        <th id="th_update_by" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol" > Update_by | Update
+          Date </th>
+        <td mat-cell *matCellDef="let element" > {{element.update_by}} </td>
+      </ng-container>
+
+    
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <div style="display: flex;">
+            <mat-icon class="icon-pointer" (click)="showDialogViewTask(element)" [ngStyle]="{'visibility':is_view ? 'visible' : 'hidden'}">visibility</mat-icon>
+            <mat-icon class="icon-pointer" (click)="showDialogEditTask(element)" [ngStyle]="{'visibility':is_edit ? 'visible' : 'hidden'}">edit</mat-icon>
+            <mat-icon class="icon-pointer" (click)="showConfirmDelete(element)" [ngStyle]="{'visibility':is_delete ? 'visible' : 'hidden'}">delete</mat-icon>
+          </div>
+            
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter </td>
+      </tr>
+    </table>
+
+
+  </div>
+  <!-- end on table -->
+
+  <!-- on pageine -->
+  <div class="row">
+    <mat-paginator #paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="handlePageEvent($event)">
+    </mat-paginator>
+
+  </div>
+  <!-- end on pageine -->
+
+</div>
+
+<!-- Confirm Dialog -->
+<div>
+  <p-toast></p-toast>
+  <p-confirmDialog [style]="{width: '50vw'}" [visible]="false"> </p-confirmDialog>
+</div>
+<!-- end confirm dialog -->
+
+
+<div>
+  <p-dialog header="Notify Message" [visible]="isShowMessageNotify" (visibleChange)="onCloseDialogNotifyMessage()"
+    [draggable]="false" [style]="{width: '30vw'}">
+    <!-- <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <span class="font-bold white-space-nowrap"></span>
+        </div>
+    </ng-template> -->
+    <p class="m-0">
+      {{messageNotify}}
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="onCloseDialogNotifyMessage()" label="Ok" pAutoFocus></p-button>
+    </ng-template>
+  </p-dialog>
+</div>
+
+
+<!-- Dialog2 -->
+<div>
+  <p-dialog header="Notify Message" [visible]="isShowMessageNotify2" (visibleChange)="onCloseDialogNotifyMessage2()"
+    [draggable]="false" [style]="{width: '30vw'}">
+    <!-- <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <span class="font-bold white-space-nowrap"></span>
+        </div>
+    </ng-template> -->
+    <p class="m-0">
+      {{messageNotify2}}
+    </p>
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="onCloseDialogNotifyMessage2()" label="Ok" pAutoFocus></p-button>
+    </ng-template>
+  </p-dialog>
+</div>

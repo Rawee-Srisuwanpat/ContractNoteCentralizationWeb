@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+* {
+    //font-family: 'Kanit', sans-serif;
+    font-family: 'Arial', "Helvetica", sans-serif;
+}
+
+
+// //Mobile devices
+// @media (min-width: 320px) and (max-width: 480px) {
+// }
+
+// //iPads, Tablets
+// @media (min-width: 481px) and (max-width: 768px) {
+// }
+
+// //Small screens, laptops
+// @media (min-width: 769px) and (max-width: 1024px) {
+// }
+
+// //Extra large screens, TV
+// @media (min-width: 1201px) {
+// }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
